@@ -3,6 +3,7 @@
 using namespace std;
 
 int Book::nextID=100000;
+
 // accessors and mutators
 void Book::setAuthor(string a){author = a;}
 string Book::getAuthor(){return author;}
@@ -19,7 +20,12 @@ void Book::setID( int id){ID=id;}
 void Book::setCost( float c){cost=c;}
 float Book::getCost(){return cost;}
 
-void Book::setStatus(int s){stat = static_cast <status> (s);}
+void Book::setStatus(int s) { 
+    if (s == 0) { stat = in; }
+    else if (s == 1) { stat = out; }
+    else if (s == 2) { stat = repair; }
+    else if (s == 3) { stat = lost; }
+}
 int Book::getStatus(){return stat;}
 
 //default constructor
@@ -34,11 +40,11 @@ Book::Book(){
 
 //parameterized constructor
 Book::Book(string a, string t, long long int i, float c){
-author = a;
-title = t;
-ISBN = i;
-cost = c;
-ID=nextID;
-stat = in;
-++nextID;
+    author = a;
+    title = t;
+    ISBN = i;
+    cost = c;
+    ID=nextID;
+    stat = in;
+    ++nextID;
 }

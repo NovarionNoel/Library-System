@@ -35,24 +35,18 @@ Loan::Loan(){
     checkout = time(0);
     due= time(0)+(10*24*60*60);
     recheck = false;
-    overdue = false;}
+    overdue = false;
+}
 
 //parameterized constructor
 Loan::Loan(int pID, int bID){
     patronID=pID;
     bookID = bID;
     ID = nextID;
+    nextID++;
     checkout = time(0);
     due = time(0)+(10*24*60*60);
     recheck =false;
     overdue = false;
-    nextID++;}
-
-void Loan::printLoan(){
-    cout << "Patron: " << getPatronID() << endl;
-    cout << "Book: " << getBookID() << endl;
-    time_t time = getDue();
-    const time_t *t;
-    t = &time;
-    cout << "Due: " << ctime(t) << endl;
 }
+
